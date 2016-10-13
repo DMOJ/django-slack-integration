@@ -8,7 +8,8 @@ class SlackMessageHandler(AdminEmailHandler):
     def emit(self, record):
         from slack_integration.models import SlackIntegration
 
-        if not SlackIntegration.get_solo().bot_token:
+        info = SlackIntegration.get_solo()
+        if not info.bot_token or not info.error_channel:
             return
 
         self.__level = record.levelname
