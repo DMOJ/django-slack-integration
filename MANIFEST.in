@@ -1,0 +1,5 @@
+include README.md
+include LICENSE
+include MANIFEST.in
+recursive-include slack_integration/templates *
+recursive-exclude * *.py[co]
