@@ -1,0 +1,9 @@
+{% extends "slack/base.html" %}
+
+{% block body %}
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{ form.as_ul }}
+        <input type="submit" value="Submit">
+    </form>
+{% endblock %}
