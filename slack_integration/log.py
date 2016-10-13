@@ -6,6 +6,11 @@ __all__ = ['SlackMessageHandler']
 
 class SlackMessageHandler(AdminEmailHandler):
     def emit(self, record):
+        from slack_integration.models import SlackIntegration
+
+        if not SlackIntegration.get_solo().bot_token:
+            return
+
         self.__level = record.levelname
         AdminEmailHandler.emit(self, record)
 
