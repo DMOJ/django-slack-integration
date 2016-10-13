@@ -48,11 +48,15 @@ def oauth_callback(request):
     }).json()
 
     store = SlackIntegration.get_solo()
-    store.team_id = result['team_id']
-    store.team_name = result['team_name']
-    store.access_token = result['access_token']
-    store.bot_name = result['bot']['bot_user_id']
-    store.bot_token = result['bot']['bot_access_token']
-    store.save()
+    try:
+        store.team_id = result['team_id']
+        store.team_name = result['team_name']
+        store.access_token = result['access_token']
+        store.bot_name = result['bot']['bot_user_id']
+        store.bot_token = result['bot']['bot_access_token']
+    except KeyError:
+        return HttpResponseBadRequest('Slack OAuth returned bad results:\n%s' % store, content_type='text/plain')
+    else:
+        store.save()
 
     return HttpResponse('Authentication success', content_type='text/plain')
