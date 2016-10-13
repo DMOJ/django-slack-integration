@@ -1,10 +1,8 @@
 from setuptools import setup, find_packages
 
-from slack_integration import VERSION
-
 setup(
     name='django-slack-integration',
-    version='.'.join(map(str, VERSION)),
+    version='0.0.1',
     description='Slack integration for Django.',
     author='Quantum',
     author_email='quantum@dmoj.ca',
