@@ -40,6 +40,7 @@ def message_callback(request):
         logger.warning('Received callback request with unknown callback_id: %s', callback)
         return HttpResponseNotFound('unknown callback')
 
+    logger.info('Received callback request: %s', data)
     try:
         result = handler(data)
     except InvalidSlackCallbackError as e:
