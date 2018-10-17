@@ -26,6 +26,8 @@ def slack_message(message, channel=None):
         if not info.error_channel:
             raise ImproperlyConfigured('No default channel configured')
         message['channel'] = info.error_channel
+    else:
+        message['channel'] = channel
 
     if 'attachments' in message:
         message['attachments'] = json.dumps(message['attachments'])
