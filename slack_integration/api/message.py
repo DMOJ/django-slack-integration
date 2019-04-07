@@ -1,7 +1,10 @@
 import json
+
 from copy import copy
 
 import requests
+import six
+
 from django.core.exceptions import ImproperlyConfigured
 
 from slack_integration.exceptions import SlackAPIError
@@ -17,7 +20,7 @@ def slack_message(message, channel=None):
         message = copy(message)
     elif isinstance(message, list):
         message = {'attachments': message}
-    elif isinstance(message, basestring):
+    elif isinstance(message, six.string_types):
         message = {'text': message}
     else:
         raise TypeError('Unsupported message type')
