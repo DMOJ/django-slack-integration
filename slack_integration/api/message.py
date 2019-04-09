@@ -1,10 +1,8 @@
 import json
-
 from copy import copy
 
 import requests
-import six
-
+from django.utils import six
 from django.core.exceptions import ImproperlyConfigured
 
 from slack_integration.exceptions import SlackAPIError
