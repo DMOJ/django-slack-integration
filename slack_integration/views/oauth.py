@@ -8,7 +8,7 @@ from django.core.exceptions import ImproperlyConfigured
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseBadRequest, HttpResponse
 from django.shortcuts import redirect
-from sjango.utils.six.moves.urllib.parse import urlencode
+from django.utils.six.moves.urllib.parse import urlencode
 
 from slack_integration.models import SlackIntegration
 
