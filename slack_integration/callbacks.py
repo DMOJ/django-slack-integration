@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from django.core.urlresolvers import reverse_lazy
+from django.urls import reverse_lazy
 from django.utils import six
 
 from slack_integration.exceptions import InvalidSlackCallbackError

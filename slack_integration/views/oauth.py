@@ -5,9 +5,9 @@ import requests
 from django.conf import settings
 from django.core.cache import cache
 from django.core.exceptions import ImproperlyConfigured
-from django.core.urlresolvers import reverse
 from django.http import HttpResponseBadRequest, HttpResponse
 from django.shortcuts import redirect
+from django.urls import reverse
 from django.utils.six.moves.urllib.parse import urlencode
 
 from slack_integration.models import SlackIntegration
