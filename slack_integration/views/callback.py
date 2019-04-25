@@ -11,6 +11,7 @@ from django.views.decorators.http import require_POST
 
 from slack_integration.callbacks import get_handler
 from slack_integration.exceptions import InvalidSlackCallbackError
+from slack_integration.utils import utf8bytes
 
 logger = logging.getLogger('slack_integration.callbacks.message')
 
@@ -26,7 +27,7 @@ def message_callback(request):
         return HttpResponseBadRequest('no payload specified')
     data = json.loads(request.POST.get('payload'))
 
-    if not compare_digest(data.get('token').encode('utf-8'), settings.SLACK_API_VERIFY_TOKEN):
+    if not compare_digest(data.get('token').encode('utf-8'), utf8bytes(settings.SLACK_API_VERIFY_TOKEN)):
         logger.warning('Received callback request with bad token: %s', data.get('token'))
         return HttpResponseForbidden('invalid verification token')
 
