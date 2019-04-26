@@ -25,6 +25,6 @@ setup(
         'Topic :: Software Development :: Libraries :: Python Modules',
         'Topic :: Software Development :: User Interfaces',
     ],
-    install_requires=['django', 'requests'],
+    install_requires=['django', 'requests', 'django-solo'],
     zip_safe=False,
 )
