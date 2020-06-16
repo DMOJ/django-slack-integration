@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.utils.log import AdminEmailHandler
 from django.utils.translation import ugettext
 
@@ -29,5 +30,5 @@ class SlackMessageHandler(AdminEmailHandler):
                     'INFO': 'good',
                 }.get(self.__level, '#aaa'),
             }],
-            'username': ugettext('Django Exception'),
+            'username': getattr(settings, 'SLACK_LOG_ERROR_USERNAME', ugettext('Django Exception')),
         })
