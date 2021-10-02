@@ -1,7 +1,6 @@
 from datetime import datetime
 
 from django.urls import reverse_lazy
-from django.utils import six
 
 from slack_integration.exceptions import InvalidSlackCallbackError
 
@@ -19,8 +18,7 @@ class SlackCallbackMeta(type):
         return self.message
 
 
-class SlackCallbackHandler(six.with_metaclass(SlackCallbackMeta)):
-
+class SlackCallbackHandler(metaclass=SlackCallbackMeta):
     def __init__(self, data):
         try:
             self.response_url = data['response_url']
@@ -66,7 +64,7 @@ def slack_callback(name):
 
 
 def unregister_callback(item):
-    if isinstance(item, six.string_types):
+    if isinstance(item, str):
         del _registry[item]
     elif hasattr(item, 'callback_id'):
         del _registry[item.callback_id]

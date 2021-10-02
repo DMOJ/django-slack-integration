@@ -1,14 +1,14 @@
 import os
 from binascii import hexlify
+from urllib.parse import urlencode
 
 import requests
 from django.conf import settings
 from django.core.cache import cache
 from django.core.exceptions import ImproperlyConfigured
-from django.http import HttpResponseBadRequest, HttpResponse
+from django.http import HttpResponse, HttpResponseBadRequest
 from django.shortcuts import redirect
 from django.urls import reverse
-from django.utils.six.moves.urllib.parse import urlencode
 
 from slack_integration.models import SlackIntegration
 
