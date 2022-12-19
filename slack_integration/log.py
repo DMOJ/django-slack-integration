@@ -1,6 +1,6 @@
 from django.conf import settings
 from django.utils.log import AdminEmailHandler
-from django.utils.translation import ugettext
+from django.utils.translation import gettext
 
 __all__ = ['SlackMessageHandler']
 
