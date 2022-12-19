@@ -1,6 +1,6 @@
 from django import forms
 from django.shortcuts import render
-from django.utils.translation import ugettext
+from django.utils.translation import gettext
 
 from slack_integration.api.channels import list_channels
 from slack_integration.models import SlackIntegration
