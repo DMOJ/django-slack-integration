@@ -30,5 +30,5 @@ class SlackMessageHandler(AdminEmailHandler):
                     'INFO': 'good',
                 }.get(self.__level, '#aaa'),
             }],
-            'username': getattr(settings, 'SLACK_LOG_ERROR_USERNAME', ugettext('Django Exception')),
+            'username': getattr(settings, 'SLACK_LOG_ERROR_USERNAME', gettext('Django Exception')),
         })

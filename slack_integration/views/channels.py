@@ -24,6 +24,6 @@ def default_channel_select(request):
         form = ChannelSelectForm(initial={'channel': SlackIntegration.get_solo().error_channel})
 
     return render(request, 'slack/channel_select.html', {
-        'title': ugettext('Select Default Channel'),
+        'title': gettext('Select Default Channel'),
         'form': form,
     })
